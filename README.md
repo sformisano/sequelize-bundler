@@ -1,5 +1,4 @@
-# Sequelize Bundler -
-
+# Sequelize Bundler - Manage Sequelize Models With Ease
 [![Build Status](https://travis-ci.org/sformisano/sequelize-bundler.svg?branch=master)](https://travis-ci.org/sformisano/sequelize-bundler)
 [![Coverage Status](https://coveralls.io/repos/github/sformisano/sequelize-bundler/badge.svg)](https://coveralls.io/github/sformisano/sequelize-bundler)
 [![Maintainability](https://api.codeclimate.com/v1/badges/1bf350a80be568015f10/maintainability)](https://codeclimate.com/github/sformisano/sequelize-bundler/maintainability)
