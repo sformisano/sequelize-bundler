@@ -4,94 +4,26 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/1bf350a80be568015f10/maintainability)](https://codeclimate.com/github/sformisano/sequelize-bundler/maintainability)
 [![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)
 
-This utility allows you to pick Sequelize models through a glob, import them through the Sequelize import method, run associations after all of them are imported (so import order does not matter) and then retrieve all of them through a single variable.
+This utility allows you to select Sequelize models through a glob, import them through the Sequelize import method, run associations after all of them are imported (so import order does not matter) and then retrieve all of them through a single variable.
 
 Here's how you do it:
 
 ```js
 const getBundledSequelizeModels = require('get-bundled-sequelize-models')
 
-// remember, the param is a glob so you can match complex directory structures
+// remember, the param is a glob so you can match more complex directory/subdirectory structures
 const appModels = getBundledSequelizeModels('path/to/my/models/**/*.js')
 ```
 
 Here's an example user model:
 
 ```js
-export default function (sequelize, DataTypes) {
-  const fields = {
-    firstName: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        notEmpty: true
-      }
-    },
-    lastName: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        notEmpty: true
-      }
-    },
-    title: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        notEmpty: true
-      }
-    },
-    email: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      unique: true,
-      validate: {
-        isEmail: true,
-        notEmpty: true
-      }
-    },
-    password: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        notEmpty: true
-      }
-    }
-  }
+module.exports = (sequelize, DataTypes) => {
+  // your user fields...
+  const fields = {}
 
   const User = sequelize.define('User', fields, {
-    tableName: 'Users',
-    defaultScope: defaultScope,
-    hooks: {
-      beforeValidate: (user) => {
-        if (type) {
-          setSingleTableInheritanceType(user, type)
-        }
-
-        return new Promise((resolve, reject) => {
-          // TODO make sure this excludes pre-existing users
-          if (user.id) {
-            resolve(user)
-          }
-
-          bcrypt.genSalt(10, (error, salt) => {
-            if (error) {
-              reject(error)
-            }
-
-            bcrypt.hash(user.password, salt, null, (error, hash) => {
-              if (error) {
-                reject(error)
-              }
-
-              user.password = hash
-
-              resolve(user)
-            })
-          })
-        })
-      }
-    }
+    tableName: 'Users'
   })
 
   // this will run after all models are imported, and you can reference any of
@@ -113,80 +45,12 @@ Here's an example user model file exporting multiple user types bound do the sam
 database table (i.e. STI):
 
 ```js
-export default function (sequelize, DataTypes) {
-  const fields = {
-    firstName: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        notEmpty: true
-      }
-    },
-    lastName: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        notEmpty: true
-      }
-    },
-    title: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        notEmpty: true
-      }
-    },
-    email: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      unique: true,
-      validate: {
-        isEmail: true,
-        notEmpty: true
-      }
-    },
-    password: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        notEmpty: true
-      }
-    }
-  }
+module.exports = (sequelize, DataTypes) => {
+  // your user fields...
+  const fields = {}
 
   const ProviderUser = sequelize.define('ProviderUser', fields, {
-    tableName: 'Users',
-    defaultScope: defaultScope,
-    hooks: {
-      beforeValidate: (user) => {
-        if (type) {
-          setSingleTableInheritanceType(user, type)
-        }
-
-        return new Promise((resolve, reject) => {
-          // TODO make sure this excludes pre-existing users
-          if (user.id) {
-            resolve(user)
-          }
-
-          bcrypt.genSalt(10, (error, salt) => {
-            if (error) {
-              reject(error)
-            }
-
-            bcrypt.hash(user.password, salt, null, (error, hash) => {
-              if (error) {
-                reject(error)
-              }
-
-              user.password = hash
-
-              resolve(user)
-            })
-          })
-        })
-      }
-    }
+    tableName: 'Users'
   })
 
   ProviderUser.associate = function (models) {
@@ -194,38 +58,7 @@ export default function (sequelize, DataTypes) {
   }
 
   const CustomerUser = sequelize.define('CustomerUser', fields, {
-    tableName: 'Users',
-    defaultScope: defaultScope,
-    hooks: {
-      beforeValidate: (user) => {
-        if (type) {
-          setSingleTableInheritanceType(user, type)
-        }
-
-        return new Promise((resolve, reject) => {
-          // TODO make sure this excludes pre-existing users
-          if (user.id) {
-            resolve(user)
-          }
-
-          bcrypt.genSalt(10, (error, salt) => {
-            if (error) {
-              reject(error)
-            }
-
-            bcrypt.hash(user.password, salt, null, (error, hash) => {
-              if (error) {
-                reject(error)
-              }
-
-              user.password = hash
-
-              resolve(user)
-            })
-          })
-        })
-      }
-    }
+    tableName: 'Users'
   })
 
   CustomerUser.associate = function (models) {
