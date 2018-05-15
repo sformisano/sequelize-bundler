@@ -19,10 +19,7 @@ Here's an example user model:
 
 ```js
 module.exports = (sequelize, DataTypes) => {
-  // your user fields...
-  const fields = {}
-
-  const User = sequelize.define('User', fields, {
+  const User = sequelize.define('User', {}, {
     tableName: 'Users'
   })
 
@@ -42,14 +39,11 @@ module.exports = (sequelize, DataTypes) => {
 **Pro tip:** model files can export multiple models, each with its own associations.
 
 Here's an example user model file exporting multiple user types bound do the same
-database table (i.e. STI):
+database table (single table inheritance style):
 
 ```js
 module.exports = (sequelize, DataTypes) => {
-  // your user fields...
-  const fields = {}
-
-  const ProviderUser = sequelize.define('ProviderUser', fields, {
+  const ProviderUser = sequelize.define('ProviderUser', {}, {
     tableName: 'Users'
   })
 
