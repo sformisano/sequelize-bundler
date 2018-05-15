@@ -51,7 +51,7 @@ module.exports = (sequelize, DataTypes) => {
     models.ProviderUser.belongsTo(models.ProviderOrganization)
   }
 
-  const CustomerUser = sequelize.define('CustomerUser', fields, {
+  const CustomerUser = sequelize.define('CustomerUser', {}, {
     tableName: 'Users'
   })
 
