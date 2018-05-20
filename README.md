@@ -4,6 +4,8 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/1bf350a80be568015f10/maintainability)](https://codeclimate.com/github/sformisano/sequelize-bundler/maintainability)
 [![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)
 
+[![NPM](https://nodei.co/npm/sequelize-bundler.png?mini=true)](https://npmjs.org/package/sequelize-bundler)
+
 This utility allows you to select Sequelize models through a glob, import them through the Sequelize import method, run associations after all of them are imported (so import order does not matter) and then retrieve all of them through a single variable.
 
 Here's how you do it:
