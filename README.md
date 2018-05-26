@@ -11,7 +11,7 @@ This utility allows you to select Sequelize models through a glob, import them t
 Here's how you do it:
 
 ```js
-const getBundledSequelizeModels = require('get-bundled-sequelize-models')
+const getBundledSequelizeModels = require('sequelize-bundler')
 
 // remember, the param is a glob so you can match more complex directory/subdirectory structures
 const appModels = getBundledSequelizeModels('path/to/my/models/**/*.js')
